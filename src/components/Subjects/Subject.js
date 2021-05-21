@@ -54,7 +54,7 @@ const Subject = () => {
         setForm({...form, name: subject.name, description: subject.description })
     },[subject])
     //console.log('outside ' + JSON.stringify(subject))
-    console.log('outside ' + JSON.stringify(form))
+    //console.log('outside ' + JSON.stringify(form))
     // if(editSubject) {
     //     setName(editSubject.name)
     //     setDescription(editSubject.description)

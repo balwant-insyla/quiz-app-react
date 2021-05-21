@@ -42,7 +42,7 @@ const Drawers = () => {
       //e.preventDefault()
       try {
         await dispatch(logout(history))
-        history.push('/')
+        //history.push(baseURL)
         
         
       } catch (err) {
@@ -109,7 +109,7 @@ const Drawers = () => {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={popperOpen} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <MenuItem to="/profile" component={Link} onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem to="" component={Link} onClick={handleLogout}>Logout</MenuItem>
+                    <MenuItem to="/redirect" component={Link} onClick={handleLogout}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

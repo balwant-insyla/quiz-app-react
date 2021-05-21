@@ -50,7 +50,7 @@ const SignUp = () => {
       //console.log(e)
       setError(e.message)
       
-      console.log(e.message)
+      //console.log(e.message)
       //alert(error)
       
     } 

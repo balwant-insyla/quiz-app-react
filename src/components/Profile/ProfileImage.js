@@ -32,11 +32,17 @@ const ProfileImage = () => {
     const { user } = useSelector((state) => state.auth.user)
     const classes = useStyles()
     const avatarBaseURL = baseURL+'/uploads/'
-    console.log(avatarBaseURL + user?.avatar)
+    
+    //console.log(avatarBaseURL + user?.avatar)
+
     const handleUploadClick = async (e) => {
         const formData = new FormData()
         formData.append('avatar', e.target.files[0])
-        await dispatch(uploadAvatar(formData))
+        //console.log('profile'+ JSON.stringify(formData))
+        if(formData) {
+            await dispatch(uploadAvatar(formData))
+        } 
+        
         
     }
     return (

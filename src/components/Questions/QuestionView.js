@@ -21,7 +21,7 @@ const QuestionView = (props) => {
     //const [options, setOptions] = useState({})
     question =  questions.find((q) => q._id === questionId)
     
-    console.log(JSON.stringify(question.statements))
+    //console.log(JSON.stringify(question.statements))
     //if(question) setOptions(question[0].options)
     return (
         <React.Fragment>

@@ -30,7 +30,7 @@ function getComparator(order, orderBy) {
 
 // Send row data on edit click to parent component
 export const handleEdit = (subject) => {
-  console.log('exported'+JSON.stringify(subject))
+  //console.log('exported'+JSON.stringify(subject))
  
   return subject
 }

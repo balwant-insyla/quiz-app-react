@@ -113,7 +113,7 @@ const AddQuestion = () => {
     //console.log(`${JSON.stringify(isChecked)}`)
     //console.log(`Statement Data ${JSON.stringify(fields)}`)
     //console.log(`Options Data ${JSON.stringify(optionFields)}`)
-    console.log(`form data ${JSON.stringify(form)}`)
+    //console.log(`form data ${JSON.stringify(form)}`)
     return (
         <React.Fragment>
         { user?.role === 'admin'  ? (

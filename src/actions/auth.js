@@ -7,7 +7,7 @@ export const signin = (formData, router) => async (dispatch) => {
   try {
     
     const { data } = await api.signIn(formData);
-    console.log(data)
+    //console.log(data)
     dispatch({ type: AUTH, data });
 
     router.push('/home');
@@ -51,7 +51,8 @@ export const logout  = (router) => {
     try {
       await api.logOut()
       //await api.logOut()
-      dispatch({ type: LOGOUT })
+      const { data } = { token: undefined}
+      dispatch({ type: LOGOUT, data })
       router.push('/')
     } catch (e) {
       throw new Error(e.response.data.message)
@@ -82,7 +83,7 @@ export const uploadAvatar = (file) => async (dispatch) => {
   try {
     //console.log('Action file data' + file)
     const { data } = await api.uploadAvatar(file)
-     console.log('Action data' + JSON.stringify(data))
+    //console.log('Action data' + JSON.stringify(data))
     dispatch({type: UPLOAD_AVATAR, data})
   } catch(e) {
     //console.log(e.response.data.message)
