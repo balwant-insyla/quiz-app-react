@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import  { Container, Grid, Paper, Box, FormControl, InputLabel, Select, MenuItem,
     TextField, Typography, Button  } from '@material-ui/core';
 import Drawers from '../Drawers/Drawers'
@@ -7,7 +7,7 @@ import Copyright from '../Footer/Copyright/Copyright'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../actions/auth'
 import ProfileImage from './ProfileImage'
-
+import Navbar from '../Navbar/Navbar'
 // import { getPosts } from '../../actions/posts';
 // import Posts from '../Posts/Posts';
 // import Form from '../Form/Form';
@@ -70,7 +70,7 @@ const handleSubmit = async (e) => {
  
   return (
     <div className={classes.root}>
-    <Drawers />
+    { user.role === 'student' ? <Navbar /> : <Drawers /> }
     <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>

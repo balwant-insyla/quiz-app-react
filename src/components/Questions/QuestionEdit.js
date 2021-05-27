@@ -140,7 +140,7 @@ const QuestionEdit = (props) => {
                                              </FormControl>
                                             <FormControl className={classes.formControl}>
                                                 <InputLabel id="subject-level">Select Level</InputLabel>
-                                                <Select labelId="subject-level" value={level} fullWidth onClick={handleLevelChange} id="subject" >
+                                                <Select labelId="subject-level" value={level} fullWidth onClick={handleLevelChange} id="level" >
                                                     <MenuItem value={'Level 0'}>Level 0</MenuItem>
                                                     <MenuItem value={'Level 1'}>Level 1</MenuItem>
                                                     <MenuItem value={'Level 2'}>Level 2</MenuItem>

@@ -4,17 +4,16 @@ import  { Container, Grid, Paper, Box, Typography  } from '@material-ui/core';
 import Drawers from '../Drawers/Drawers'
 import useStyles from './styles'
 import Copyright from '../Footer/Copyright/Copyright'
-//import { useSelector } from 'react-redux'
-
+import { useSelector } from 'react-redux'
+import Navbar from '../Navbar/Navbar'
 // import { getPosts } from '../../actions/posts';
 // import Posts from '../Posts/Posts';
 // import Form from '../Form/Form';
-
+import { persistStore  } from 'redux-persist'
 const Home = () => {
   const classes = useStyles()
-  const accessToken = JSON.parse(localStorage.getItem('user')).token
-  console.log(accessToken)
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const { user } = useSelector((state) => state.auth.user) //Current logged in user data
   // const [currentId, setCurrentId] = useState(0);
   // const dispatch = useDispatch();
 
@@ -24,7 +23,8 @@ const Home = () => {
 
   return (
     <div className={classes.root}>
-    <Drawers />
+    { user.role === 'student' ? <Navbar /> : <Drawers /> }
+    
     <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>

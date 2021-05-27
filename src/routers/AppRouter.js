@@ -13,6 +13,7 @@ import AddQuestion from '../../src/components/Questions/AddQuestion'
 import Students from '../../src/components/Students/Students'
 import Profile from '../../src/components/Profile/Profile'
 import { Container } from '@material-ui/core'
+import Quiz from '../../src/components/Quiz/Quiz'
 //export const history = createBrowserHistory()
 
 const AppRouter = () => (
@@ -28,6 +29,8 @@ const AppRouter = () => (
             <PrivateRoute path="/questions/edit/:id" exact component={QuestionEdit}/>
             <PrivateRoute path="/students" exact component={Students}/>
             <PrivateRoute path="/profile" exact component={Profile}/>
+            <PrivateRoute path="/quiz" exact component={Quiz}/>
+
 
             {/*
             <PrivateRoute path="/create" component={AddExpensePage} />

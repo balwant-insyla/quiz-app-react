@@ -1,58 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import decode from 'jwt-decode';
-
-import logo from '../../images/q2-logo.png';
-import * as actionType from '../../constants/actionTypes';
+import React, { useState } from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { AppBar, Popper, Grow, Paper, Avatar, MenuItem, MenuList, ClickAwayListener } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { baseURL } from '../../constants/baseURL'
+import logo from '../../images/q2-logo.png'
 import useStyles from './styles';
+import { logout } from '../../actions/auth'
+
+
+
 const Navbar = () => {
   //const [user, setUser] = useState();
   const dispatch = useDispatch();
-  const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
-  const user = useSelector((state) => state.auth.authData)
-  console.log(user)
-  const logout = () => {
-    dispatch({ type: actionType.LOGOUT });
+  const { user, token } = useSelector((state) => state.auth.user) 
+  const avatarBaseURL = baseURL+'/uploads/'
 
-    history.push('/auth');
 
-    //setUser(null);
+  // profile menu start
+  const [popperOpen, setPopperOpen] = useState(false);
+  const anchorRef = React.useRef(null);
+  const handleToggle = () => {
+    setPopperOpen((prevOpen) => !prevOpen);
   };
-
-  useEffect(() => {
-    console.log(user)
-    const token = user?.token;
-
-    if (token) {
-      const decodedToken = decode(token);
-
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
     }
 
-    //setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
+    setPopperOpen(false);
+  };
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setPopperOpen(false);
+    }
+  }
+  const handleLogout = async () => {
 
-  return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
-        
-        <img className={classes.image} src={logo} alt="icon" height="60" />
-      </div>
-      <Toolbar className={classes.toolbar}>
-        {user?.token && (
-          <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user?.user.name} src={user?.imageUrl}>{user?.user.name.charAt(0)}</Avatar>
-            <Typography className={classes.userName} variant="h6">{user?.user.name}</Typography>
-            <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-          </div>
-        ) 
-      }
-      </Toolbar>
+    try {
+      await dispatch(logout(history))
+    } catch(err) {
+
+    }
+  }
+  
+
+  return ( token ? (
+    <div>
+      <CssBaseline />
+      <AppBar className={classes.appBar} position="absolute">
+        <div className={classes.brandContainer}>
+          <img className={classes.image} src={logo} alt="icon" height="60" />
+        </div>
+        <div ref={anchorRef} aria-controls={popperOpen ? 'menu-list-grow' : undefined} aria-haspopup="true" onClick={handleToggle} className={classes.profile}>
+          <Avatar className={classes.blue} alt={user?.name} src={avatarBaseURL + user?.avatar}>{user?.name.charAt(0)}</Avatar>
+          <Popper open={popperOpen} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+              >
+                <Paper className={classes.paperPopper}>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList autoFocusItem={popperOpen} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                      <MenuItem to="/profile" component={Link} onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem to="/quiz" component={Link} onClick={handleClose}>Quiz</MenuItem>
+                      <MenuItem to="/redirect" component={Link} onClick={handleLogout}>Logout</MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+           )}
+          </Popper>
+        </div>
     </AppBar>
+  </div>
+  ) : ( null)
+    
   );
 };
 

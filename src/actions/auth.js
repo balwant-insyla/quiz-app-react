@@ -3,10 +3,11 @@ import { AUTH, LOGOUT, UPLOAD_AVATAR, UPDATE_PROFILE } from '../constants/action
 import * as api from '../api/index.js';
 
 export const signin = (formData, router) => async (dispatch) => {
-  //setError()
+  
   try {
     
     const { data } = await api.signIn(formData);
+    localStorage.setItem('token', data.token)
     //console.log(data)
     dispatch({ type: AUTH, data });
 
@@ -31,6 +32,7 @@ export const signup = (formData, router) => {
     try {
 
       const { data } = await api.signUp(formData)
+      localStorage.setItem('token', data.token)
       dispatch({ type: AUTH, data })
       router.push('/home');
 
@@ -52,6 +54,7 @@ export const logout  = (router) => {
       await api.logOut()
       //await api.logOut()
       const { data } = { token: undefined}
+      localStorage.removeItem('token')
       dispatch({ type: LOGOUT, data })
       router.push('/')
     } catch (e) {

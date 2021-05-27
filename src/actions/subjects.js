@@ -1,4 +1,4 @@
-import { ADD_SUBJECT, GET_SUBJECTS, EDIT_SUBJECT, DELETE_SUBJECT } from '../constants/actionTypes';
+import { ADD_SUBJECT, GET_SUBJECTS, EDIT_SUBJECT, DELETE_SUBJECT, GET_ALL_SUBJECTS } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const addSubject = (newSubject) => async (dispatch) => {
@@ -38,6 +38,16 @@ export const deleteSubject = (id) => async (dispatch) => {
         await api.deleteSubject(id)
         dispatch({ type: DELETE_SUBJECT, payload: id })
     } catch (e) {
+        throw new Error(e.response.data.message)
+    }
+}
+
+export const fetchSubjectsName = () => async (dispatch) => {
+    try {
+        const { data }  = await api.fetchSubjectsName()
+        //console.log(JSON.stringify(data))
+        dispatch({type: GET_ALL_SUBJECTS, payload: data})
+    } catch(e) {
         throw new Error(e.response.data.message)
     }
 }

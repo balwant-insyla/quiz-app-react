@@ -82,7 +82,6 @@ export const AdminListItems = () => {
 
   
   export const StudentListItems = () => {
-    const classes = useStyles();
     return (
       <List>
       <ListItem button>

@@ -1,4 +1,4 @@
-import { ADD_QUESTION, GET_QUESTIONS, EDIT_QUESTION, DELETE_QUESTION } from '../constants/actionTypes'
+import { ADD_QUESTION, GET_QUESTIONS, EDIT_QUESTION, DELETE_QUESTION, GET_QUIZ_QUESTIONS } from '../constants/actionTypes'
 import * as api from '../api/index.js'
 
 export const addQuestion = (newQuestion) => async (dispatch) => {
@@ -36,5 +36,17 @@ export const deleteQuestion = (id) => async (dispatch) => {
 
     } catch(e) {
         throw new Error(e.response.data.message)
+    }
+}
+
+//Get Quiz  questions for student
+
+export const getQuizQuestion = (subject, level, size) =>  async (dispatch) => {
+    try {
+        const { data } = await api.fetchQuizQuestions(subject, level, size)
+        //console.log('quiz questions action ' + JSON.stringify(data))
+        dispatch ({type: GET_QUIZ_QUESTIONS, payload: data})
+    } catch (e) {
+        throw new Error(e.response.data.message)   
     }
 }

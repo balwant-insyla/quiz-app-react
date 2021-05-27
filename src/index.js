@@ -16,7 +16,7 @@ import './index.css';
 const persistConfig = {
   key: 'authType',
   storage: storage,
-  whitelist: ['auth', 'subjects'] // only auth reducer will be persisted
+  whitelist: ['auth'] // only auth reducer will be persisted
   //blacklist: ['navigation'] // navigation will not be persisted
 };
 const pReducer = persistReducer(persistConfig, reducers)

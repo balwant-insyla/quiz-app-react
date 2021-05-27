@@ -1,7 +1,7 @@
 import React from 'react'
 //import { useSelector } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
-
+import { useSelector } from 'react-redux'
 
 
 const PrivateRoute =  ({
@@ -19,9 +19,10 @@ const PrivateRoute =  ({
     
     //isAuthenticated= !!localStorage.getItem('profile').token
     //console.log(`Private Route,${isAuthenticated}`)
+    const user = useSelector(state => state.auth?.user);
     return (
         <Route {...rest} component={(props) => (
-            localStorage.getItem('user') ? (
+            user?.token ? (
                 <div>
                     <Component {...props} />
                 </div>
@@ -32,12 +33,4 @@ const PrivateRoute =  ({
     }/>
     )   
 }
-
-
-//const isAuthenticated = !!user.uid
-
-// const mapStateToProps = (state) => ({
-//     isAuthenticated: !!state.auth.uid
-// })
-
 export default PrivateRoute

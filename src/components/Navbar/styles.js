@@ -3,17 +3,19 @@ import { blueGrey } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
-    margin: '30px 0',
+    margin: '0  0 60px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    background: 'transparent',
+    background: '#003366',
+    
     boxShadow: 'none',
+    height: '70px'
   },
   heading: {
-    color: 'rgba(0,183,255, 1)',
+    color: '#FFFFFF',
     textDecoration: 'none',
   },
   image: {
@@ -27,11 +29,11 @@ export default makeStyles((theme) => ({
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
   },
   userName: {
     display: 'flex',
     alignItems: 'center',
+    color: '#FFFFFF',
   },
   brandContainer: {
     display: 'flex',
@@ -41,4 +43,12 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(blueGrey[500]),
     backgroundColor: blueGrey[500],
   },
+  logout: {
+    color: '#FFFFFF',
+    border: '1px solid #FFFFFF',
+    borderRadius: '5px',
+    '&:hover': {
+      border: '2px solid #e3e3e3',
+    }
+  }
 }));
