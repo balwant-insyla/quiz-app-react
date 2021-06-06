@@ -7,9 +7,6 @@ import Copyright from '../Footer/Copyright/Copyright';
 import { useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
-// import { getPosts } from '../../actions/posts';
-// import Posts from '../Posts/Posts';
-// import Form from '../Form/Form';
 const Home = () => {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
