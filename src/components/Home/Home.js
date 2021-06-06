@@ -11,15 +11,9 @@ import { Link } from 'react-router-dom';
 // import Posts from '../Posts/Posts';
 // import Form from '../Form/Form';
 const Home = () => {
-  const classes = useStyles()
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-  const { user } = useSelector((state) => state.auth.user) //Current logged in user data
-  // const [currentId, setCurrentId] = useState(0);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getPosts());
-  // }, [currentId, dispatch]);
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const { user } = useSelector((state) => state.auth.user); 
 
   return (
     <div className={classes.root}>
