@@ -4,7 +4,43 @@ export default makeStyles((theme) => ({
     root: {
         maxWidth:'100%',
         padding: '0',
-      },
+    },
+    appBar: {
+        margin: '0  0 60px 0',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px 50px',
+        background: '#003366',
+        
+        boxShadow: 'none',
+        height: '70px'
+    },
+    loaderBox: {
+        position:'fixed',
+        left: '0',
+        top: '0',
+        right: '0',
+        bottom:'0',
+        zIndex: '999999',
+        background: 'rgba(0, 0, 0, 0.75)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItem: 'center',
+    },
+    loader: {
+        position:'absolute',
+        left: '50%',
+        top: '50%',
+    },
+    brandContainer: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    image: {
+        marginLeft: '15px',
+    },
     content: {
         flexGrow: 1,
         height: '100vh',
@@ -12,6 +48,11 @@ export default makeStyles((theme) => ({
     },
     container: {
         marginTop:'80px',
+        paddingTop: theme.spacing(4),
+        display:'flex',
+        paddingBottom: theme.spacing(4),
+    },
+    containerNew: {
         paddingTop: theme.spacing(4),
         display:'flex',
         paddingBottom: theme.spacing(4),
@@ -48,6 +89,17 @@ export default makeStyles((theme) => ({
         margin: '0 20px',
         padding: '5px',
         textAlign: 'right',
+    },
+    wishesBox: {
+        width: '100%',
+        margin: '20px auto',
+        textAlign: 'center',
+    },
+    wishes: {
+        padding: '5px 20px',
+        fontSize: '20px',
+        fontWeight: 800,
+        
     },
     proceed: {
         textAlign: 'right',
@@ -99,11 +151,17 @@ export default makeStyles((theme) => ({
     },
     questionPrevButton: {
         width: '150px',
-        margin: '0 10px',
+        margin: '10px',
+    },
+    negativeMarks: {
+        margin: '20px 5px',
+        padding: '10px',
+        color: '#ff0035',
+        border: '1px dashed #003366',
     },
     questionNextButton: {
         width: '150px',
-        margin: '0 10px',
+        margin: '10px',
     },
     questionSubmitButtonDiv: {
         float:'right',
@@ -112,5 +170,33 @@ export default makeStyles((theme) => ({
         width: '150px',
         textAlign: 'center',
         margin: '30px',
+    },
+    reportCard: {
+        textAlign:'center',
+        padding: '10px, 0',
+        marginBottom: '30px',
+        color: '#003366',
+    },
+    optionsRow: {
+        [theme.breakpoints.up('lg')]: {
+            display: 'flex',
+            flexDirection: 'row',
+          },
+        [theme.breakpoints.up('xl')]: {
+            display: 'flex',
+            flexDirection: 'row',
+          },
+    },
+    correctOption: {
+        padding: '5px 10px',
+        border: 'solid 2px #eaf205',
+    },
+    userCorrectOption: {
+        padding: '5px 10px',
+        border: 'solid 2px #08541c',
+    },
+    userIcorrectOption: {
+        padding: '5px 10px',
+        border: 'solid 2px #b31b04',
     },
 }))

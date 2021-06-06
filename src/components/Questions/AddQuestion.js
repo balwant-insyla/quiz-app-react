@@ -146,7 +146,6 @@ const AddQuestion = () => {
                                             fullWidth onClick={handleLevelChange}
                                             id="level"
                                             >
-                                                <MenuItem value={'Level 0'}>Level 0</MenuItem>
                                                 <MenuItem value={'Level 1'}>Level 1</MenuItem>
                                                 <MenuItem value={'Level 2'}>Level 2</MenuItem>
                                                 <MenuItem value={'Level 3'}>Level 3</MenuItem>

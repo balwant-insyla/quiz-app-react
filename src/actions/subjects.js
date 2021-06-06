@@ -4,7 +4,7 @@ import * as api from '../api/index.js';
 export const addSubject = (newSubject) => async (dispatch) => {
     try {
         const  { data }  = await api.createSubject(newSubject)
-        console.log(`add subject action ${JSON.stringify(data)}`)
+        //console.log(`add subject action ${JSON.stringify(data)}`)
         dispatch({ type: ADD_SUBJECT, payload: data })
     } catch(e) {
         throw new Error(e.response.data.message)

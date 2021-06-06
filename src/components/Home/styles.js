@@ -25,5 +25,13 @@ export default makeStyles((theme) => ({
     fixedHeight: {
         height: 240,
     },
-
+    cardBox: {
+        margin: '10px 0 20px 0',
+        textAlign: 'center',
+        padding: '10px',
+    },
+    linkButton: {
+        margin: '0 auto',
+        textAlign: 'center',
+    },
 }))

@@ -66,6 +66,7 @@ const Navbar = () => {
                 <Paper className={classes.paperPopper}>
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList autoFocusItem={popperOpen} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                      <MenuItem to="/home" component={Link} onClick={handleClose}>Home</MenuItem>
                       <MenuItem to="/profile" component={Link} onClick={handleClose}>Profile</MenuItem>
                       <MenuItem to="/quiz" component={Link} onClick={handleClose}>Quiz</MenuItem>
                       <MenuItem to="/redirect" component={Link} onClick={handleLogout}>Logout</MenuItem>
