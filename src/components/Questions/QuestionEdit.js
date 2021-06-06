@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import Drawers from '../Drawers/Drawers'
 import useStyles from './styles'
@@ -6,6 +6,7 @@ import Copyright from '../Footer/Copyright/Copyright'
 import  { Container, Grid, Paper, Box, Typography, Select,
      MenuItem, FormControl, InputLabel, TextField, Button, Checkbox } from '@material-ui/core'
 import { editQuestion } from '../../actions/questions'
+import { fetchSubjectsName } from "../../actions/subjects";
 
 const QuestionEdit = (props) => {
     const classes = useStyles()
@@ -13,9 +14,9 @@ const QuestionEdit = (props) => {
     const [form, setForm] = useState();
     const [error, setError] = useState()
     
-    // useEffect(() => {
-    //     dispatch(getQuestions())
-    // }, [])
+    useEffect(() => {
+        dispatch(fetchSubjectsName());
+      }, []);
     const { user } = useSelector((state) => state.auth.user) //Current logged in user data
     const questions = useSelector((state) => state.questions)
     const subjects = useSelector((state) => state.subjects)

@@ -1,39 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import Drawers from '../Drawers/Drawers'
 import useStyles from './styles'
 import Copyright from '../Footer/Copyright/Copyright'
 import  { Container, Grid, Paper, Box, Typography, Select, MenuItem, FormControl, InputLabel, TextField, Button, Checkbox } from '@material-ui/core'
-
+import { fetchSubjectsName } from "../../actions/subjects";
 import { addQuestion } from '../../actions/questions'
 
 const AddQuestion = () => {
 
-    const classes = useStyles()
+    const classes = useStyles();
     const [form, setForm] = useState();
-    const [error, setError] = useState()
-    const [subject, setSubject] = useState('')
-    const [level, setLevel]= useState('')
-    const dispatch = useDispatch()
-    const subjects = useSelector((state) => state.subjects)
-    const { user } = useSelector((state) => state.auth.user) //Current logged in user data
+    const [error, setError] = useState();
+    const [subject, setSubject] = useState('');
+    const [level, setLevel]= useState('');
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchSubjectsName());
+      }, []);
+    const subjects = useSelector((state) => state.subjects);
+    const { user } = useSelector((state) => state.auth.user); //Current logged in user data
    
-    const [fields, setFields] = useState([{ statements: undefined }])
+    const [fields, setFields] = useState([{ statements: undefined }]);
     function handleStatementChange(i, e)  {
-        const statements = [...fields]
-        statements[i].text = e.target.value
-        setFields(statements)
-        setForm({...form, statements })
+        const statements = [...fields];
+        statements[i].text = e.target.value;
+        setFields(statements);
+        setForm({...form, statements });
     }
     function handleStatementAdd() {
-        const statements = [...fields]
-        statements.push({ text: null })
-        setFields(statements)
+        const statements = [...fields];
+        statements.push({ text: null });
+        setFields(statements);
     }
     function handleStatementRemove(i) {
-        const statements= [...fields]
-        statements.splice(i, 1)
-        setFields(statements)
+        const statements= [...fields];
+        statements.splice(i, 1);
+        setFields(statements);
     }
     /* Statement sections end */
 
