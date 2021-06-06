@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { Grid, TextField, Button, InputLabel, Typography, Paper } from '@material-ui/core'
+import React, { useState } from 'react';
+import { Grid, TextField, Button, InputLabel, Typography, Paper } from '@material-ui/core';
 
 const Statement = () => {
 
-    const [fields, setFields] = useState([{ value: null }])
+    const [fields, setFields] = useState([{ value: null }]);
 
     function handleChange(i, e)  {
-        const values = [...fields]
-        values[i].value = e.target.value
-        setFields(values)
+        const values = [...fields];
+        values[i].value = e.target.value;
+        setFields(values);
     }
 
     function handleAdd() {
-        const values = [...fields]
-        values.push({ value: null })
-        setFields(values)
+        const values = [...fields];
+        values.push({ value: null });
+        setFields(values);
     }
 
     function handleRemove(i) {
-        const values= [...fields]
-        values.splice(i, 1)
-        setFields(values)
+        const values= [...fields];
+        values.splice(i, 1);
+        setFields(values);
     }
     return (
         <Grid item xs={12} sm={12}>
